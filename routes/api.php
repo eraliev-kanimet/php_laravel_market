@@ -1,10 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/oauth/register', [AuthController::class, 'register']);
-Route::post('/oauth/login', [AuthController::class, 'login']);
-Route::apiResource('categories', CategoriesController::class);
-Route::get('subcategories/{category}', [CategoriesController::class, 'subcategories']);
+Route::get('unauthorized', fn () => response([], 401))->name('unauthorized');
+Route::post('oauth/register', [AuthController::class, 'register'])->name('register');
+Route::post('oauth/login', [AuthController::class, 'login'])->name('login');
