@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('title', 64);
-            $table->string('picture')->nullable();
+            $table->string('picture')->default('');
             $table->integer('products_count')->default(0);
         });
     }

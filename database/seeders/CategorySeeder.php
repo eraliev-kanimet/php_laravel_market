@@ -12,8 +12,10 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()->state(['category_id' => null])->count(10)->create();
-        Category::factory()->count(20)->state(['category_id' => rand(1, 10)])->create();
-        Category::factory()->count(20)->state(['category_id' => rand(1, 29)])->create();
+        $categories = Category::factory()->state(['category_id' => null])->count(10)->create();
+        foreach ($categories as $category) {
+            Category::factory()->state(['category_id' => $category->id])->count(4)->create();
+        }
+        Category::factory()->count(20)->create();
     }
 }

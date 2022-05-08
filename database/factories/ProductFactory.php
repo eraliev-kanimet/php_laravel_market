@@ -15,7 +15,7 @@ class ProductFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(5),
-            'category_id' => rand(1, 50),
+            'category_id' => rand(1, 70),
             'desc' => $this->faker->text(),
             'manufacturer' => $this->faker->sentence(5),
             'properties' => [
@@ -42,7 +42,7 @@ class ProductFactory extends Factory
     private function getImage(int $image_number = 1): string
     {
         $path = storage_path() . '/pictures/' . $image_number . '.jpg';
-        $image_name = md5($path) . '.jpg';
+        $image_name = md5(time()) . '.jpg';
         $resize = Image::make($path)->encode('jpg');
         Storage::disk('public')->put('pictures/' . $image_name, $resize->__toString());
         return '/storage/pictures/' . $image_name;
