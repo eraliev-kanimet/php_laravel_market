@@ -27,7 +27,7 @@ class LoginTest extends TestCase
         $data = [
             'name' => 'Admin',
             'email' => 'admin@admin.com',
-            'password' => Hash::make('password')
+            'password' => Hash::make($this->user_password)
         ];
 
         $this->user = User::create($data);
