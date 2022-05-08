@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @method static paginate(int $int)
  * @method static whereNull(string $string)
+ * @method static find(int $category_id)
  * @property mixed $categories
+ * @property int $category_id
  */
 class Category extends Model
 {
