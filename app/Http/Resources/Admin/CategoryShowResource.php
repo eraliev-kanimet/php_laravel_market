@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Admin;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -13,10 +13,8 @@ class CategoryShowResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'id' => $this->resource->id,
-            'title' => $this->resource->title,
-            'picture' => $this->resource->picture,
-            'category_id' => $this->resource->category_id
+            'data' => CategoryResource::collection($this->resource->categories),
+            'category' => new CategoryResource($this->resource)
         ];
     }
 }
