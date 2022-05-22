@@ -8,12 +8,12 @@ class Authenticate extends Middleware
 {
     /**
      * @param $request
-     * @return string|void|null
+     * @return never|void
      */
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-            return route('unauthorized');
+            return abort(401);
         }
     }
 }

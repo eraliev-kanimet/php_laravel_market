@@ -19,10 +19,10 @@ class ProductFactory extends Factory
             'desc' => $this->faker->text(),
             'manufacturer' => $this->faker->sentence(5),
             'properties' => [
-                $this->faker->sentence(5) => $this->faker->sentence(5),
-                $this->faker->sentence(5) => $this->faker->sentence(5),
-                $this->faker->sentence(5) => $this->faker->sentence(5),
-                $this->faker->sentence(5) => $this->faker->sentence(5)
+                ['title' => $this->faker->sentence(5), 'value' => $this->faker->sentence(5)],
+                ['title' => $this->faker->sentence(5), 'value' => $this->faker->sentence(5)],
+                ['title' => $this->faker->sentence(5), 'value' => $this->faker->sentence(5)],
+                ['title' => $this->faker->sentence(5), 'value' => $this->faker->sentence(5)]
             ],
             'count' => rand(10, 50),
             'price' => rand(10, 50),
@@ -45,6 +45,6 @@ class ProductFactory extends Factory
         $image_name = md5(time()) . '.jpg';
         $resize = Image::make($path)->encode('jpg');
         Storage::disk('public')->put('pictures/' . $image_name, $resize->__toString());
-        return '/storage/pictures/' . $image_name;
+        return 'storage/pictures/' . $image_name;
     }
 }

@@ -42,7 +42,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e): Response|JsonResponse|SymfonyResponse
     {
         if ($e instanceof MethodNotAllowedHttpException) {
-            return response()->json(['message' => 'Not found'], 404);
+            return abort(404);
         }
         return parent::render($request, $e);
     }
