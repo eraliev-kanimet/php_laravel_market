@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Categories;
+namespace Tests\Feature\Admin\Categories;
 
 use App\Models\Category;
 use Laravel\Passport\Passport;

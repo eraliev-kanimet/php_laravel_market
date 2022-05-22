@@ -16,8 +16,8 @@ class CategoryResource extends JsonResource
             'id' => $this->resource->id,
             'title' => $this->resource->title,
             'category_id' => $this->resource->category_id,
-            'picture' => $this->resource->picture == '' ? '' : asset($this->resource->picture),
-            'category' => $this->resource->category_id ? $this->resource->category->title : '',
+            'picture' => $this->resource->picture == '' ? null : asset($this->resource->picture),
+            'category_title' => $this->resource->category_id ? $this->resource->category->title : '',
             'products_count' => $this->resource->products_count
         ];
     }

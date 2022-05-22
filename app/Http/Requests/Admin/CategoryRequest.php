@@ -38,3 +38,13 @@ class CategoryRequest extends FormRequest
         ];
     }
 }
+// <products-header/>
+// <products-table/>
+// <base-sidebar :active="product">
+//   <product-form/>
+// </base-sidebar>
+// this.receiptOfProducts();
+// receiptOfProducts: 'products/receiptOfProducts'
+// product: state => state.products.sidebar
+// import {productModule} from "@/store/productModule";
+// products: productModule

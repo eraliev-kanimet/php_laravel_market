@@ -30,6 +30,6 @@ class CategoryFactory extends Factory
         $image_name = md5(time()) . '.jpg';
         $resize = Image::make($path)->encode('jpg');
         Storage::disk('public')->put('pictures/' . $image_name, $resize->__toString());
-        return '/storage/pictures/' . $image_name;
+        return 'storage/pictures/' . $image_name;
     }
 }
