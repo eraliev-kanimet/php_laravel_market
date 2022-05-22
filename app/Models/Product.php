@@ -9,7 +9,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @method static paginate(int $int)
  * @method static where(string $string, mixed $input)
+ * @method static find(int $int)
+ * @property int $id
  * @property int $category_id
+ * @property string $manufacturer
+ * @property string $title
+ * @property string $desc
+ * @property int $count
+ * @property int $price
+ * @property array $images
+ * @property array $properties
  */
 class Product extends Model
 {

@@ -17,10 +17,10 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('desc');
             $table->string('manufacturer');
-            $table->json('properties');
+            $table->json('properties')->nullable();
             $table->integer('count')->default(0);
             $table->decimal('price')->default(0);
-            $table->json('images');
+            $table->json('images')->nullable();
             $table->timestamps();
         });
     }

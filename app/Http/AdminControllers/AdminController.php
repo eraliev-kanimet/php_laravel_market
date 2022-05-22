@@ -5,6 +5,7 @@ namespace App\Http\AdminControllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Intervention\Image\Facades\Image;
 
@@ -25,5 +26,31 @@ class AdminController extends BaseController
         $path = $dir . '/' . md5(time()) . $file->getClientOriginalName();
         Image::make($file)->resize(600, 500)->save($path);
         return $path;
+    }
+
+    /**
+     * @param Request $request
+     * @param array $new_images
+     * @param array $old_images
+     * @param array $removed
+     * @return array
+     */
+    public function saveImages(Request $request, array $new_images = [], array $old_images = [], array $removed = []): array
+    {
+        $data = [];
+        foreach ($new_images as $key => $value) {
+            if ($request->hasFile($value)) {
+                $data[] = $this->saveImage($request->file($value));
+            } else {
+                foreach ($removed as $item) {
+                    if ($item == $key) {
+                        $data[] = '';
+                    } else {
+                        $data[] = $old_images[$key];
+                    }
+                }
+            }
+        }
+        return $data;
     }
 }
